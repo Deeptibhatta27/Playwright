@@ -35,7 +35,7 @@ test('add to cart', async ({ page }) => {
   await page.getByText('Sauce Labs Backpack').click();
   await page.getByRole('button', { name: 'Add to cart' }).click();
 
-  await expect(page.getByRole('link', { name: '1' })).toBeVisible();
+  await expect(page.locator('.shopping_cart_badge')).toHaveText('1');
 });
 
 
@@ -48,7 +48,7 @@ test('checkout flow', async ({ page }) => {
   await page.getByRole('button', { name: 'Login' }).click();
 
   await page.getByRole('button', { name: 'Add to cart' }).first().click();
-  await page.getByRole('link', { name: 'Shopping Cart' }).click();
+  await page.locator('.shopping_cart_link').click();
   await page.getByRole('button', { name: 'Checkout' }).click();
 
   await page.getByRole('textbox', { name: 'First Name' }).fill('John');
@@ -70,7 +70,7 @@ test('checkout form validation', async ({ page }) => {
   await page.getByRole('textbox', { name: 'Password' }).fill('secret_sauce');
   await page.getByRole('button', { name: 'Login' }).click();
 
-  await page.getByRole('link', { name: 'Shopping Cart' }).click();
+  await page.locator('.shopping_cart_link').click();
   await page.getByRole('button', { name: 'Checkout' }).click();
 
   await page.getByRole('button', { name: 'Continue' }).click();
