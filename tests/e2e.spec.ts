@@ -10,7 +10,7 @@ test('successful login', async ({ page }) => {
 
   await expect(page.getByText('Products')).toBeVisible();
 });
-
+// CI demo update
 
 // 2. Failed Login
 test('failed login', async ({ page }) => {
